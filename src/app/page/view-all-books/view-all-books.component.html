@@ -18,7 +18,7 @@
         <td>{{book.author}}</td>
         <td>{{book.category}}</td>
         <td>{{book.qty}}</td>
-        <td><button (click)="setSelectedBook(book)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
+        <td><button (click)="setSelectedBook(book)" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
         <td><button (click)="setSelectedBook(book)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" data-bs-whatever="@getbootstrap"><i class="bi bi-pencil-square"></i></button></td>
       </tr>
     </tbody>
@@ -29,8 +29,8 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Delete-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,6 +42,25 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)=" deleteBook()">Delete</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Update-->
+<div class="modal fade" id="updateConfromationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Conformation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        if you want delete 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Update</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
@@ -85,7 +104,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Update</button>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateConfromationModal">Update</button>
       </div>
     </div>
   </div>
