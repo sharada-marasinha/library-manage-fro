@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-view-all-books',
   standalone: true,
   imports: [HttpClientModule,FormsModule,CommonModule],
-  imports: [HttpClientModule,FormsModule,CommonModule],
   templateUrl: './view-all-books.component.html',
   styleUrl: './view-all-books.component.css'
 })
