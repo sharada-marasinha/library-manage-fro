@@ -1,3 +1,6 @@
+<div *ngIf="!bookList" class="spinner-grow text-primary position-absolute" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
 <div class="table-responsive small container">
   <table class="table table-sm" *ngIf="bookList">
     <thead>
@@ -24,10 +27,6 @@
     </tbody>
   </table>
 </div>
-
-
-
-
 
 <!-- Modal Delete-->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,7 +56,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        if you want delete 
+        if you want Update
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary " data-bs-dismiss="modal" (click)="saveBook()">Update</button>
@@ -110,3 +109,4 @@
     </div>
   </div>
 </div>
+

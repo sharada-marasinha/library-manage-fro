@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class ViewAllBooksComponent implements OnInit{
     private http;
-    public bookList:any ={};
+    public bookList:any;
     public selectedBook : any={
       "id":null,
       "isbn":null,
@@ -36,7 +36,6 @@ export class ViewAllBooksComponent implements OnInit{
     loadBooks() {
       this.http.get('http://localhost:8080/book/get').subscribe((data) => {
         this.bookList = data;
-        console.log(this.bookList);
       });
     }
     deleteBook(){
@@ -69,7 +68,6 @@ export class ViewAllBooksComponent implements OnInit{
           icon: "success"
         });
         this.selectedBook={};
-
       });
     }
 }
