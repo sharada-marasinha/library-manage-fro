@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<!-- Modal Update-->
+<!-- Modal Update Confromation-->
 <div class="modal fade" id="updateConfromationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -60,13 +60,14 @@
         if you want delete 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Update</button>
+        <button type="button" class="btn btn-primary " data-bs-dismiss="modal" (click)="saveBook()">Update</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Modal Update-->
 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -78,27 +79,27 @@
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">ID</label>
-            <input type="text"  value={{selectedBook?.id}} disabled class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook.id" [ngModelOptions]="{standalone: true}" disabled class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">ISBN</label>
-            <input type="text"  value={{selectedBook?.isbn}} disabled class="form-control" id="recipient-name">
+            <input type="text"  [(ngModel)]="selectedBook.isbn" [ngModelOptions]="{standalone: true}" disabled class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Title</label>
-            <input type="text" value={{selectedBook?.title}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook.title" [ngModelOptions]="{standalone: true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Author</label>
-            <input type="text" value={{selectedBook?.author}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook.author" [ngModelOptions]="{standalone: true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Category</label>
-            <input type="text" value={{selectedBook?.category}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook.category" [ngModelOptions]="{standalone: true}" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">QTY</label>
-            <input type="text" value={{selectedBook?.qty}} class="form-control" id="recipient-name">
+            <input type="text" [(ngModel)]="selectedBook.qty" [ngModelOptions]="{standalone: true}" class="form-control" id="recipient-name">
           </div>
         </form>
       </div>
