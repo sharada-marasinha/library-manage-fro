@@ -3,6 +3,7 @@ import { HttpClient,HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -13,7 +14,18 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent implements OnInit{
     private http;
     public countryList:any;
-    public selectedCountry:any;
+    public selectedCountryCode:any;
+    public selectedCountry:any="Country";
+    public userObject={
+      firstName:null,
+      lastName:null,
+      userName:null,
+      email:null,
+      address:null,
+      address2:null,
+      country:this.selectedCountry,
+      phoneNumber:null
+    }
     constructor(private httpCliant:HttpClient){
       this.http=httpCliant;
     }
@@ -24,14 +36,24 @@ export class RegisterComponent implements OnInit{
     let api ="https://restcountries.com/v3.1/all";
     this.http.get(api).subscribe(res =>{
       this.countryList=res;
-      console.log(this.countryList);
     });
   }
 
 
   setSlectodCountry(country:any){
-    this.selectedCountry=country;
-    console.log(this.selectedCountry);
-    
+    console.log(country.name.common);
+    this.selectedCountry=country.name.common;
+    this.selectedCountryCode=country.idd.root+""+country.idd.suffixes[0]+" ";
+    console.log(this.selectedCountryCode);
+
+  }
+
+  submitForm(){
+    console.log(this.userObject);
+    this.http.post("http://localhost:8080/user/add",this.userObject).subscribe(data =>{
+      console.log("add user");
+
+    });
+
   }
 }

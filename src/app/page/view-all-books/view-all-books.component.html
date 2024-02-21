@@ -2,11 +2,11 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <div class="table-responsive small container">
-  <table class="table table-sm" *ngIf="bookList">
+  <table class="table table-sm table-hover table-bordered table-group-divider " *ngIf="bookList">
     <thead>
-      <tr>
+      <tr class="text-center ">
         <th scope="col">id</th>
-        <th scope="col">ISBN</th>
+        <th scope="col">(ISBN)</th>
         <th scope="col">Title</th>
         <th scope="col">Author</th>
         <th scope="col">Category</th>
@@ -20,7 +20,7 @@
         <td>{{book.title}}</td>
         <td>{{book.author}}</td>
         <td>{{book.category}}</td>
-        <td>{{book.qty}}</td>
+        <td class="text-center">{{book.qty}}</td>
         <td><button (click)="setSelectedBook(book)" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
         <td><button (click)="setSelectedBook(book)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" data-bs-whatever="@getbootstrap"><i class="bi bi-pencil-square"></i></button></td>
       </tr>
