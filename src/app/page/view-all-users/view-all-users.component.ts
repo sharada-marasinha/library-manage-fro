@@ -26,7 +26,7 @@ export class ViewAllUsersComponent {
   "phoneNumber": null
 }
 ;
-  
+
 
   constructor(private httpCliant:HttpClient){
     this.http=httpCliant;
@@ -37,7 +37,7 @@ export class ViewAllUsersComponent {
   loadUsers() {
     this.http.get('http://localhost:8080/user/get-all').subscribe((data) => {
       console.log(data);
-      
+
       this.userlist = data;
     });
   }
