@@ -16,7 +16,9 @@ export class RegisterComponent implements OnInit{
     private http;
     public countryList:any;
     public selectedCountryCode:any;
-    private isUserAlreadyExist :boolean=false;
+    public isExsistUser:any;
+    private isRegisterUser :boolean=false;
+    private canRegisterUser :boolean=false;
     public selectedCountry:any="Country";
     public userObject={
       firstName:null,
@@ -50,43 +52,65 @@ export class RegisterComponent implements OnInit{
 
   }
 
-  submitForm(){
+  submitForm() {
+    this.http.get(`http://localhost:8080/user/check/${this.userObject.userName}`).subscribe(
+      (data) => {
+        this.isExsistUser=data;
+        console.log(data);
+          if(this.isExsistUser==true){
+            this.registerUser(false);
+            Swal.fire({
+              title: "Can't Register this user",
+              text: `${this.userObject.userName} has already been registered!`,
+              icon: "error"
+            });
+          }else{
+            this.registerUser(true);
+          }
 
-    try {
-      this.http.get(`http://localhost:8080/user/find/${this.userObject.userName}`).subscribe((data) => {
-          this.isUserAlreadyExist = true;
+
+
+
+
+
+
+      },
+      (error) => {
+        Swal.fire({
+          title: "Can't Register this user",
+          text: `${this.userObject.userName} has already been registered!`,
+          icon: "error"
+        });
+      }
+    );
+
+
+
+  }
+
+  registerUser(condition:boolean){
+    if(condition){
+      console.log(this.userObject);
+      this.http.post("http://localhost:8080/user/add", this.userObject).subscribe(
+        (data) => {
+          console.log("add user");
+          Swal.fire({
+            title: "User Registration Success!",
+            text: `Hello ${this.userObject.firstName}`,
+            icon: "success"
+          });
         },
         (error) => {
           console.error('Error:', error);
-          this.isUserAlreadyExist = false;
+          // Handle error during user registration
+          Swal.fire({
+            title: "Error",
+            text: "An error occurred while registering the user.",
+            icon: "error"
+          });
         }
-
-
-      )
-    } catch (error) {
-      Swal.fire({
-        title: "Cant Register this user",
-        text: `${this.userObject.userName} has been already registed ! `,
-        icon: "error"
-      });
+      );
     }
-
-
-    if(!this.isUserAlreadyExist){
-      console.log(this.userObject);
-      this.http.post("http://localhost:8080/user/add",this.userObject).subscribe(data =>{
-        console.log("add user");
-        Swal.fire({
-          title: "User Registation sucsess!",
-          text: `Hello ${this.userObject.firstName} `,
-          icon: "success"
-        });
-      });
-    }else{
-
-
-    }
-
 
   }
 }
