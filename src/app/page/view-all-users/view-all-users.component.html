@@ -1,11 +1,11 @@
 <div *ngIf="!userlist" class="spinner-grow text-primary position-absolute" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-  <div class="table-responsive small container">
-    <table class="table table-sm table-hover table-bordered table-group-divider " *ngIf="userlist">
+  <div class=" scrollable-table container">
+    <table class="table table-hover table-bordered" *ngIf="userlist">
       <thead>
-        <tr class="text-center ">
-          <th scope="col">id</th>
+        <tr class="text-center">
+          <th scope="col" class="bg-body-secondary">id</th>
           <th scope="col">Name</th>
           <th scope="col">Address 01</th>
           <th scope="col">Address 02</th>
@@ -29,7 +29,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <!-- Modal Delete-->
   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -39,7 +39,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          if you want delete 
+          if you want delete
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)=" deleteUser()">Delete</button>
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Modal Update Confromation-->
   <div class="modal fade" id="updateConfromationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -67,7 +67,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Modal Update-->
   <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -84,7 +84,7 @@
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">First Name</label>
-              <input type="text"  [(ngModel)]="selectedUser.firstName" [ngModelOptions]="{standalone: true}" disabled class="form-control" id="recipient-name">
+              <input type="text"  [(ngModel)]="selectedUser.firstName" [ngModelOptions]="{standalone: true}" class="form-control" id="recipient-name">
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Last Name</label>
@@ -119,5 +119,4 @@
       </div>
     </div>
   </div>
-  
-  
+

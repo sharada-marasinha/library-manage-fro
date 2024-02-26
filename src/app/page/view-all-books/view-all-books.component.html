@@ -1,11 +1,11 @@
 <div *ngIf="!bookList" class="spinner-grow text-primary position-absolute" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<div class="table-responsive small container">
-  <table class="table table-sm table-hover table-bordered table-group-divider " *ngIf="bookList">
+<div class="container scrollable-table">
+  <table class="table table-hover table-bordered overflow-scroll  " *ngIf="bookList">
     <thead>
       <tr class="text-center ">
-        <th scope="col">id</th>
+        <th scope="col" class="bg-body-secondary">id</th>
         <th scope="col">(ISBN)</th>
         <th scope="col">Title</th>
         <th scope="col">Author</th>
@@ -21,7 +21,7 @@
         <td>{{book.author}}</td>
         <td>{{book.category}}</td>
         <td class="text-center">{{book.qty}}</td>
-        <td><button (click)="setSelectedBook(book)" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
+        <td ><button (click)="setSelectedBook(book)" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
         <td><button (click)="setSelectedBook(book)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" data-bs-whatever="@getbootstrap"><i class="bi bi-pencil-square"></i></button></td>
       </tr>
     </tbody>
@@ -37,7 +37,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        if you want delete 
+        if you want delete
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)=" deleteBook()">Delete</button>
