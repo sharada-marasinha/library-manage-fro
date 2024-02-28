@@ -3,13 +3,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { NavComponent } from "../../common/nav/nav.component";
 
 @Component({
-  selector: 'app-view-all-users',
-  standalone: true,
-  imports: [HttpClientModule,FormsModule,CommonModule],
-  templateUrl: './view-all-users.component.html',
-  styleUrl: './view-all-users.component.css'
+    selector: 'app-view-all-users',
+    standalone: true,
+    templateUrl: './view-all-users.component.html',
+    styleUrl: './view-all-users.component.css',
+    imports: [HttpClientModule, FormsModule, CommonModule, NavComponent]
 })
 export class ViewAllUsersComponent {
   private http;
@@ -35,7 +36,7 @@ export class ViewAllUsersComponent {
       this.loadUsers();
   }
   loadUsers() {
-    this.http.get('http://localhost:8080/user/get-all').subscribe((data) => {
+    this.http.get('http://localhost:8080/user/get-all-users').subscribe((data) => {
       console.log(data);
 
       this.userlist = data;
@@ -60,7 +61,7 @@ export class ViewAllUsersComponent {
     console.log("setSelectedUser"+user.id);
   }
   saveUser(){
-    let postApi ="http://localhost:8080/user/add";
+    let postApi ="http://localhost:8080/user/add-user";
     this.http.post(postApi,this.selectedUser).subscribe(data =>{
       console.log("saved");
       console.log(data);

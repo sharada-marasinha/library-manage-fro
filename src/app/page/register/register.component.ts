@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit{
   }
 
   submitForm() {
-    this.http.get(`http://localhost:8080/user/check/${this.userObject.userName}`).subscribe(
+    this.http.get(`http://localhost:8080/user/is-exist-user/${this.userObject.userName}`).subscribe(
       (data) => {
         this.isExsistUser=data;
         console.log(data);
@@ -91,7 +91,7 @@ export class RegisterComponent implements OnInit{
   registerUser(condition:boolean){
     if(condition){
       console.log(this.userObject);
-      this.http.post("http://localhost:8080/user/add", this.userObject).subscribe(
+      this.http.post("http://localhost:8080/user/add-user", this.userObject).subscribe(
         (data) => {
           console.log("add user");
           Swal.fire({
