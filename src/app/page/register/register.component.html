@@ -42,11 +42,15 @@
               </div>
 
               <div class="col-12">
-                <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
+                <label for="email" class="form-label">Email*</label>
                 <input type="email" class="form-control" id="email" [(ngModel)]="userObject.email" [ngModelOptions]="{standalone: true}" placeholder="you@example.com">
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Password*</label>
+                <input type="password" class="form-control" id="email" [(ngModel)]="userObject.password" [ngModelOptions]="{standalone: true}" placeholder="****">
               </div>
 
               <div class="col-12">

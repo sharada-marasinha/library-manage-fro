@@ -38,6 +38,10 @@ export const routes: Routes = [
       component:LoginComponent
     },
     {
+      path:"dashboard",
+      component:DashbordComponent
+    },
+    {
       path:"",
       component:LayoutCompornentComponent,
       children:[

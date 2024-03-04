@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit{
       lastName:null,
       userName:null,
       email:null,
+      password:null,
       address:null,
       address2:null,
       country:this.selectedCountry,
