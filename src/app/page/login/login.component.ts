@@ -26,7 +26,7 @@ export class LoginComponent {
       if(res===true){
         console.log("hee");
 
-        this.router.navigate(['/view-all-books']);
+        this.router.navigate(['/home']);
       }
 
     })

@@ -14,7 +14,7 @@ export const routes: Routes = [
     },
     {
         path:"view-all-books",
-        component:ViewAllBooksComponent
+        component:ViewAllBooksComponent,
     },
     {
         path:"register",
@@ -29,27 +29,17 @@ export const routes: Routes = [
       component:BorrowBookComponent
     },
     {
-      path:"",
-      redirectTo:"login",
-      pathMatch:"full"
+      path:"home",
+      component:DashbordComponent
     },
     {
       path:"**",
       component:LoginComponent
     },
     {
-      path:"dashboard",
-      component:DashbordComponent
+      path: '',
+      redirectTo: 'login',
+      pathMatch: 'full'
     },
-    {
-      path:"",
-      component:LayoutCompornentComponent,
-      children:[
-        {
-          path:"dashboard",
-          component:DashbordComponent
-        }
-      ]
-    }
 
 ];
