@@ -25,10 +25,7 @@ export class ViewAllUsersComponent {
   "address2": null,
   "country": null,
   "phoneNumber": null
-}
-;
-
-
+};
   constructor(private httpCliant:HttpClient){
     this.http=httpCliant;
   }
@@ -37,15 +34,12 @@ export class ViewAllUsersComponent {
   }
   loadUsers() {
     this.http.get('http://localhost:8080/user/get-all-users').subscribe((data) => {
-      console.log(data);
-
       this.userlist = data;
     });
   }
   deleteUser(){
     let api = "http://localhost:8080/user/delete/"+this.selectedUser.id;
     this.http.delete(api,{responseType:'text'}).subscribe((responce:string) => {
-      console.log(responce);
       this.loadUsers();
       Swal.fire({
         title: "Deleted!",
@@ -55,16 +49,12 @@ export class ViewAllUsersComponent {
       this.selectedUser={};
     });
   }
-
   setSelectedBook(user:any){
     this.selectedUser=user;
-    console.log("setSelectedUser"+user.id);
   }
   saveUser(){
     let postApi ="http://localhost:8080/user/add-user";
     this.http.post(postApi,this.selectedUser).subscribe(data =>{
-      console.log("saved");
-      console.log(data);
       this.loadUsers();
       Swal.fire({
         title: "Saved!",

@@ -26,8 +26,6 @@ export class ViewAllBooksComponent implements OnInit{
       "category":null,
       "qyt":null
     };
-
-
     constructor(private httpCliant:HttpClient){
       this.http=httpCliant;
     }
@@ -42,7 +40,6 @@ export class ViewAllBooksComponent implements OnInit{
     deleteBook(){
       let api = "http://localhost:8081/book/"+this.selectedBook.id;
       this.http.delete(api,{responseType:'text'}).subscribe((responce:string) => {
-        console.log(responce);
         this.loadBooks();
         Swal.fire({
           title: "Deleted!",
@@ -52,16 +49,12 @@ export class ViewAllBooksComponent implements OnInit{
         this.selectedBook={};
       });
     }
-
     setSelectedBook(book:any){
       this.selectedBook=book;
-      console.log("setSelectedBook"+book.id);
     }
     saveBook(){
       let postApi ="http://localhost:8081/book/add";
       this.http.post(postApi,this.selectedBook).subscribe(data =>{
-        console.log("saved");
-        console.log(data);
         this.loadBooks();
         Swal.fire({
           title: "Saved!",
