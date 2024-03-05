@@ -13,12 +13,9 @@ import Swal from 'sweetalert2';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit{
-    private http;
     public countryList:any;
     public selectedCountryCode:any;
     public isExsistUser:any;
-    private isRegisterUser :boolean=false;
-    private canRegisterUser :boolean=false;
     public selectedCountry:any="Country";
     public userObject={
       firstName:null,
@@ -31,9 +28,7 @@ export class RegisterComponent implements OnInit{
       country:this.selectedCountry,
       phoneNumber:null
     }
-    constructor(private httpCliant:HttpClient){
-      this.http=httpCliant;
-    }
+    constructor(private http:HttpClient){}
     ngOnInit(): void {
       this.loadCountries();
   }
@@ -43,21 +38,14 @@ export class RegisterComponent implements OnInit{
       this.countryList=res;
     });
   }
-
-
   setSlectodCountry(country:any){
-    console.log(country.name.common);
     this.selectedCountry=country.name.common;
     this.selectedCountryCode=country.idd.root+""+country.idd.suffixes[0]+" ";
-    console.log(this.selectedCountryCode);
-
   }
-
   submitForm() {
     this.http.get(`http://localhost:8080/user/is-exist-user/${this.userObject.userName}`).subscribe(
       (data) => {
         this.isExsistUser=data;
-        console.log(data);
           if(this.isExsistUser==true){
             this.registerUser(false);
             Swal.fire({
@@ -68,13 +56,6 @@ export class RegisterComponent implements OnInit{
           }else{
             this.registerUser(true);
           }
-
-
-
-
-
-
-
       },
       (error) => {
         Swal.fire({
@@ -84,9 +65,6 @@ export class RegisterComponent implements OnInit{
         });
       }
     );
-
-
-
   }
 
   registerUser(condition:boolean){
@@ -103,7 +81,6 @@ export class RegisterComponent implements OnInit{
         },
         (error) => {
           console.error('Error:', error);
-          // Handle error during user registration
           Swal.fire({
             title: "Error",
             text: "An error occurred while registering the user.",
