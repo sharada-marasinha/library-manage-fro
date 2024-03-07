@@ -5,6 +5,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -20,6 +21,8 @@ export class LoginComponent {
     "password":""
   }
   constructor(private http:HttpClient,private router:Router){}
+
+
 
   login(){
     this.http.post("http://localhost:8080/login/request-login",this.loginObj).subscribe((res:any)=>{

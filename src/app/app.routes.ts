@@ -4,7 +4,6 @@ import { ViewAllBooksComponent } from './page/view-all-books/view-all-books.comp
 import { RegisterComponent } from './page/register/register.component';
 import { ViewAllUsersComponent } from './page/view-all-users/view-all-users.component';
 import { BorrowBookComponent } from './page/borrow-book/borrow-book.component';
-import { LayoutCompornentComponent } from './page/layout-compornent/layout-compornent.component';
 import { DashbordComponent } from './page/dashbord/dashbord.component';
 
 export const routes: Routes = [
