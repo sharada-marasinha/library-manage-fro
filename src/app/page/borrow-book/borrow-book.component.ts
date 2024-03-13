@@ -27,7 +27,7 @@ public borrowBook:any={
   qty:""
 }
 
-public cartList:any=[].
+public cartList:any=[];
 
   private http;
 
