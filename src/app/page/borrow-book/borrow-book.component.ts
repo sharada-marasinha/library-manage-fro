@@ -27,7 +27,7 @@ public borrowBook:any={
   qty:""
 }
 
-public cartList:any=[]
+public cartList:any=[].
 
   private http;
 
@@ -57,7 +57,7 @@ public cartList:any=[]
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          Swal.fire("Saved!", "", "success");
+          Swal.fire("Add to cart!", "", "success");
           this.cartList.push(this.searchBookRes);
           this.searchBookRes={};
           console.log(this.cartList);
