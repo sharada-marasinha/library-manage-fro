@@ -6,6 +6,7 @@ import { ViewAllUsersComponent } from './page/view-all-users/view-all-users.comp
 import { BorrowBookComponent } from './page/borrow-book/borrow-book.component';
 import { DashbordComponent } from './page/dashbord/dashbord.component';
 import { AddBookComponent } from './page/add-book/add-book.component';
+import { ViewAllTransactionsComponent } from './page/view-all-transactions/view-all-transactions.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
     {
       path:"add-book",
       component:AddBookComponent
+    },
+    {
+      path:"view-all-transactions",
+      component:ViewAllTransactionsComponent
     },
     {
       path:"**",

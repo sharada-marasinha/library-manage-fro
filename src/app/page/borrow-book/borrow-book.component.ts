@@ -19,14 +19,6 @@ public bookId:any;
 
 public searchBookRes:any;
 
-public borrowBook:any={
-  userId:"",
-  bookId:"",
-  date:new Date(),
-  fine:"",
-  qty:""
-}
-
 public cartList:any=[];
 
   private http;
@@ -67,5 +59,35 @@ public cartList:any=[];
       });
     })
   }
+
+
+  // --------------------------------------------------------------------
+
+  bookIds:any=[];
+
+  loadBookIds(){
+    this.cartList.forEach((element:any) => {
+        this.bookIds.push(element.id);
+    });
+  }
+
+  borrowBooks(){
+    this.loadBookIds();
+    const borrowBook:any={
+      borrowId:this.user.id,
+      books:this.bookIds,
+      date:new Date(),
+      fine:""
+    }
+    console.log(borrowBook);
+
+    this.http.post("http://localhost:8082/add-borrow-details",borrowBook).subscribe(res=>{
+      console.log(res);
+
+    })
+
+  }
+
+  onEnter(){}
 
 }
